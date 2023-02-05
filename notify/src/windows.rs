@@ -263,13 +263,15 @@ fn start_read(rd: &ReadData, event_handler: Arc<Mutex<dyn EventHandler>>, handle
         data: rd.clone(),
     });
 
-    let flags = FILE_NOTIFY_CHANGE_FILE_NAME
-        | FILE_NOTIFY_CHANGE_DIR_NAME
-        | FILE_NOTIFY_CHANGE_ATTRIBUTES
-        | FILE_NOTIFY_CHANGE_SIZE
+    let flags = 0
+        // | FILE_NOTIFY_CHANGE_FILE_NAME
+        // | FILE_NOTIFY_CHANGE_DIR_NAME
+        // | FILE_NOTIFY_CHANGE_ATTRIBUTES
+        // | FILE_NOTIFY_CHANGE_SIZE
         | FILE_NOTIFY_CHANGE_LAST_WRITE
-        | FILE_NOTIFY_CHANGE_CREATION
-        | FILE_NOTIFY_CHANGE_SECURITY;
+        // | FILE_NOTIFY_CHANGE_CREATION
+        // | FILE_NOTIFY_CHANGE_SECURITY
+        ;
 
     let monitor_subdir = if (&request.data.file).is_none() && request.data.is_recursive {
         1
